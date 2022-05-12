@@ -15,14 +15,16 @@ nic_configs = wmi.WMI('').Win32_NetworkAdapter()
 nics : list[NetworkAdapter] = []
 
 for nic in nic_configs:
-    # print(nic)
-    nics.append(
-        NetworkAdapter(
+    adapter = NetworkAdapter(
             adapter_type=nic.AdapterType,
             adapter_type_id=nic.AdapterTypeID,
+            auto_sense=nic.AutoSense,
+            availability=nic.Availability,
+            caption=nic.Caption,
             net_connection_id=nic.NetConnectionID,
         )
-    )
+    print(adapter)
+    nics.append(adapter)
 
 for nic in nics:
     print(nic)
