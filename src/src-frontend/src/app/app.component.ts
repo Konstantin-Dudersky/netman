@@ -1,38 +1,23 @@
-import { Component } from '@angular/core';
-import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api';
+import { Component, OnInit } from '@angular/core';
+import { NetworkAdapter } from './schemas/NetworkAdapter';
+import { api } from './services/api';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [ConfirmationService,MessageService]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'netman';
+export class AppComponent implements OnInit {
+    nics: NetworkAdapter[] = [];
 
-  constructor(
-    private confirmationService: ConfirmationService,
-    private messageService: MessageService,
-    ) {}
+    constructor(
+        private api: api,
+    ) { }
 
-  confirm1() {
-    this.confirmationService.confirm({
-        message: 'Are you sure that you want to proceed?',
-        header: 'Confirmation',
-        icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-            this.messageService.add({severity:'info', summary:'Confirmed', detail:'You have accepted'});
-        },
-        reject: (type: ConfirmEventType) => {
-            switch(type) {
-                case ConfirmEventType.REJECT:
-                    this.messageService.add({severity:'error', summary:'Rejected', detail:'You have rejected'});
-                break;
-                case ConfirmEventType.CANCEL:
-                    this.messageService.add({severity:'warn', summary:'Cancelled', detail:'You have cancelled'});
-                break;
-            }
-        }
-    });
-}
+    ngOnInit(): void {
+        this.api.getCarsSmall().then(
+            nics => this.nics = nics
+        )
+    }
+
 }
