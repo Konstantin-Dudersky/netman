@@ -7,6 +7,7 @@
 import wmi
 
 from .NetworkAdapter import NetworkAdapter
+from .src.hosts import Host, read_hosts_file
 
 # nic_configs = wmi.WMI('').Win32_NetworkAdapterConfiguration(IPEnabled=True)
 nic_configs = wmi.WMI("").Win32_NetworkAdapter()
@@ -56,9 +57,9 @@ for nic in nic_configs:
         system_name=nic.SystemName,
         time_of_last_reset=nic.TimeOfLastReset,
     )
-    print(adapter)
-    print()
     nics.append(adapter)
+    # print(adapter)
+    # print()
 
 # fastapi
 
@@ -79,6 +80,11 @@ app.add_middleware(
 @app.get("/", response_model=list[NetworkAdapter])
 async def root():
     return nics
+
+
+@app.get("/api/hosts", response_model=list[Host])
+async def hosts() -> list[Host]:
+    return read_hosts_file()
 
 
 if __name__ == "__main__":

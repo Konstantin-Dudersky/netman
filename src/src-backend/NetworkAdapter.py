@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-
 from pydantic import BaseModel
 
 # @dataclass
@@ -43,4 +41,4 @@ class NetworkAdapter(BaseModel):
     status_info: int | None
     system_creation_class_name: str | None
     system_name: str | None
-    time_of_last_reset: str | None # datetime
+    time_of_last_reset: str | None  # datetime
