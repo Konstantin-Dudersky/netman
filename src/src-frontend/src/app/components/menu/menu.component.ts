@@ -12,21 +12,17 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
-      { label: 'Адаптеры', icon: 'fa-regular fa-forward' },
       {
-        label: 'File',
-        items: [
-          { label: 'New', icon: 'pi pi-plus' },
-          { label: 'Open', icon: 'pi pi-download' }
-        ]
+        label: 'Главная',
+        icon: 'fa-solid fa-house',
+        routerLink: '/page-main',
       },
       {
-        label: 'Edit',
-        items: [
-          { label: 'Undo', icon: 'pi pi-refresh' },
-          { label: 'Redo', icon: 'pi pi-repeat' }
-        ]
-      }];
+        label: 'Адаптеры',
+        icon: 'fa-solid fa-ethernet',
+        routerLink: '/page-network-adapters-overview',
+      },
+    ];
   }
 
 }

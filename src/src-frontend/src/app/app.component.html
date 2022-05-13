@@ -1,32 +1,3 @@
-<app-menu>
+<app-menu></app-menu>
 
-</app-menu>
-
-<i class="fa-solid fa-user"></i>
-
-<h2>sfsd</h2>
-
-<p-button label="Click"></p-button>
-
-<p-table [value]="nics">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Название адаптера</th>
-            <th>Адаптер</th>
-            <th>Подробно</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-nic>
-        <tr>
-            <td>
-                {{nic.net_connection_id}}
-            </td>
-            <td>
-                {{nic.caption}}
-            </td>
-            <td>
-                <button pButton type="button" class="p-button-secondary" icon="pi pi-info-circle"></button>
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
+<router-outlet></router-outlet>
