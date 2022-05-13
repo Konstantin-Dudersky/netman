@@ -1,0 +1,42 @@
+<ng-container *ngIf="hosts$ | async as data">
+  <p-table [value]="data" [styleClass]="'p-datatable-sm'">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        Файл hosts
+        <p-button icon="fa-solid fa-rotate"></p-button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="address">
+          IP-адрес
+          <p-sortIcon field="address"></p-sortIcon>
+        </th>
+        <th pSortableColumn="hostname">
+          Имя хоста
+          <p-sortIcon field="hostname"></p-sortIcon>
+        </th>
+        <th pSortableColumn="comment">
+          Комментарий
+          <p-sortIcon field="comment"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-host>
+      <tr>
+        <td>
+          {{ host.address }}
+        </td>
+        <td>
+          {{ host.hostname }}
+        </td>
+        <td>
+          {{ host.comment }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <p>Расположение файла - C:\Windows\System32\Drivers\etc\hosts</p>
+  </ng-template>
+  </p-table>
+</ng-container>

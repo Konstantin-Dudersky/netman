@@ -1,34 +1,54 @@
-<h1>Перечень адаптеров</h1>
+<ng-container *ngIf="nics$ | async as data">
+  <p-table #dt1 [value]="data" [styleClass]="'p-datatable-sm'">
+    <ng-template pTemplate="caption">
+      <p-toolbar>
+        <div class="p-toolbar-group-left">
+          <h3>Перечень адаптеров</h3>
+        </div>
+        <div class="p-toolbar-group-right">
+          <p-button icon="fa-solid fa-rotate" (onClick)="refresh()" class="mr-2" pTooltip="Обновить таблицу" tooltipPosition="left">
+          </p-button>
+          <p-button icon="fa-solid fa-filter-circle-xmark" (onClick)="dt1.clear()" pTooltip="Удалить фильтр" tooltipPosition="left">
+          </p-button>
+        </div>
+      </p-toolbar>
 
-<span class="p-buttonset">
-  <p-button label="Обновить" [icon]="'fa-solid fa-rotate'"></p-button>
-</span>
-
-<p-table [value]="nics">
-  <ng-template pTemplate="header">
-    <tr>
-      <th pSortableColumn="net_connection_id">
-        Название адаптера
-        <p-sortIcon field="net_connection_id"></p-sortIcon>
-      </th>
-      <th pSortableColumn="description">
-        Адаптер
-        <p-sortIcon field="description"></p-sortIcon>
-      </th>
-      <th>Подробно</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-nic>
-    <tr>
-      <td>
-        {{nic.net_connection_id}}
-      </td>
-      <td>
-        {{nic.description}}
-      </td>
-      <td>
-        <button pButton type="button" class="p-button-secondary" icon="pi pi-info-circle"></button>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="net_connection_id">
+          Название адаптера
+          <p-sortIcon field="net_connection_id"></p-sortIcon>
+          <p-columnFilter type="text" field="net_connection_id" display="menu"></p-columnFilter>
+        </th>
+        <th pSortableColumn="description">
+          Адаптер
+          <p-sortIcon field="description"></p-sortIcon>
+          <p-columnFilter type="text" field="description" display="menu"></p-columnFilter>
+        </th>
+        <th pSortableColumn="net_connection_status">
+          Состояние
+          <p-sortIcon field="net_connection_status"></p-sortIcon>
+        </th>
+        <th>Подробно</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-nic>
+      <tr>
+        <td>
+          {{ nic.net_connection_id }}
+        </td>
+        <td>
+          {{ nic.description }}
+        </td>
+        <td>
+          <app-net-connection-status [net_connection_status]="nic.net_connection_status">
+          </app-net-connection-status>
+        </td>
+        <td>
+          <button pButton type="button" class="p-button-secondary" icon="pi pi-info-circle"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>

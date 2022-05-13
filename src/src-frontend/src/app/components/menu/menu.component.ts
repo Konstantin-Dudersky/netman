@@ -4,7 +4,6 @@ import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
 
@@ -19,8 +18,15 @@ export class MenuComponent implements OnInit {
       },
       {
         label: 'Адаптеры',
+        title: 'netman - Адаптеры',
         icon: 'fa-solid fa-ethernet',
         routerLink: '/page-network-adapters-overview',
+      },
+      {
+        label: 'Файл hosts',
+        title: 'netman - hosts',
+        icon: 'fa-solid fa-file',
+        routerLink: '/hosts',
       },
     ];
   }

@@ -21,4 +21,20 @@ export interface NetworkAdapter{
     max_speed: number;
     name: string;
     net_connection_id: string;
+    net_connection_status: number;
+    net_enabled: boolean;
+    network_addresses: string[];
+    permanent_address: string;
+    physical_adapter: boolean;
+    pnp_device_id: string;
+    power_management_capabilities: number[];
+    power_management_supported: boolean;
+    product_name: string;
+    service_name: string;
+    speed: number;
+    status: string;
+    status_info: number;
+    system_creation_class_name: string;
+    system_name: string;
+    time_of_last_reset: string;
 }
