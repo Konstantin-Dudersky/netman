@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+
 // components
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -17,13 +18,20 @@ import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenubarModule } from 'primeng/menubar';
 import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { ToolbarModule } from 'primeng/toolbar';
+import { TooltipModule } from 'primeng/tooltip';
+import { NetConnectionStatusComponent } from './components/net-connection-status/net-connection-status.component';
+import { PageHostsComponent } from './components/page-hosts/page-hosts.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+    NetConnectionStatusComponent,
     PageMainComponent,
+    PageHostsComponent,
     PageNetworkAdaptersOverviewComponent,
   ],
   imports: [
@@ -32,6 +40,9 @@ import { TableModule } from 'primeng/table';
     ConfirmDialogModule,
     MenubarModule,
     TableModule,
+    TagModule,
+    ToolbarModule,
+    TooltipModule,
     // common
     BrowserModule,
     BrowserAnimationsModule,
