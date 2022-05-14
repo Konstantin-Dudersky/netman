@@ -77,7 +77,7 @@ app.add_middleware(
 )
 
 
-@app.get("/", response_model=list[NetworkAdapter])
+@app.get("/api/network-adapters", response_model=list[NetworkAdapter])
 async def root():
     return nics
 
