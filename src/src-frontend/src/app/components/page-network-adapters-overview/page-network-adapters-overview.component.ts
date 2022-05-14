@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { message } from '@tauri-apps/api/dialog';
 import { Observable } from 'rxjs';
 import { NetworkAdapter } from 'src/app/schemas/NetworkAdapter';
 import { api } from '../../services/api';
